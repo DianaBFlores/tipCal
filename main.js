@@ -1,50 +1,45 @@
-  
 //Tip calculator function
 function calculateTip() {
-    var billAmt = document.getElementById("billamt").value;
-    var serviceQual = document.getElementById("serviceQual").value;
-    var numOfPeople = document.getElementById("peopleamt").value;
-  
-    //validate input
-    if (billAmt === "" || serviceQual == 0) {
-      alert("Error: Values Missing");
+  var billAmt = document.getElementById("billamt").value;
+  var serviceQual = document.getElementById("serviceQual").value;
+  var numOfPeople = document.getElementById("peopleamt").value;
+  //validate input
+  if (billAmt === "" || serviceQual == 0 || numOfPeople == 0) {
+      window.alert("Error: Values Missing");
       return;
     }
-    //Did you input anything at all?
-    if (numOfPeople === "" || numOfPeople <= 1) {
-      numOfPeople = 1;
-      document.getElementById("each").style.display = "none";
-    } else {
-      document.getElementById("each").style.display = "block";
-    }
   
-    //Calculate the tip
-    var total = (billAmt * serviceQual) / numOfPeople;
-    total = Math.round(total * 100) / 100;
-    total = total.toFixed(2);
-    document.getElementById("totalTip").style.display = "block";
-    document.getElementById("tip").innerHTML = total;
-  
-  }
-  
-  //Don't initially show tip amount
-  document.getElementById("totalTip").style.display = "none";
-  document.getElementById("each").style.display = "none";
-  
-  //click to call function
-  document.getElementById("calculate").onclick = function() {
-    calculateTip();
-  
-  };
-  
-  //This is the slider's function
-  var slider = document.getElementById("peopleamt");
-  var output = document.getElementById("demo");
-  output.innerHTML = slider.value; // Display the default slider value
-  
-  // Update the current slider value (each time you drag the slider handle)
-  slider.oninput = function() {
-    output.innerHTML = this.value;
-  } 
+  //Calculate the tip
+  var tipeach = (billAmt * serviceQual) / numOfPeople;
+  tipeach = Math.round(tipeach * 100) / 100;
+  tipeach = tipeach.toFixed(2);
 
+ // Calculating total tip
+  var totaltip = (billAmt * serviceQual)  ;
+  //calculating total bill, which is sum of total bill + total tip
+  var totalbill =  parseFloat(billAmt) + parseFloat(totaltip) ; 
 
+  // calculat each person total payment, which is share of total bill + share of tip
+  var billeach = (totalbill)/numOfPeople ;
+  billeach = Math.round(billeach * 100)/100 ;
+  billeach = billeach.toFixed(2) ;
+
+  // this code will display summary block
+  document.getElementById("Summary").style.display = "block";
+
+  //set the fields in summary block with the values
+  document.getElementById("Bill").innerHTML = billAmt;
+  document.getElementById("Tip").innerHTML = totaltip;
+  document.getElementById("Totalbill").innerHTML = totalbill;
+  document.getElementById("Eachbill").innerHTML = billeach;
+  document.getElementById("Eachtip").innerHTML = tipeach;
+
+ 
+}
+//Don't initially show tip amount
+document.getElementById("Summary").style.display = "none";
+//document.getElementById("each").style.display = "none";
+//click to call function
+document.getElementById("calculate").onclick = function() {
+  calculateTip();
+};
