@@ -136,71 +136,43 @@ body {
   
   /* star rate */
   
-.rate-area {
-    /* float:left; */
-    align-content: center;
-    border-style: none;
-}
-
-.rate-area:not(:checked) > input {
-    position:absolute;
-    top:-9999px;
-    clip:rect(0,0,0,0);
-}
-
-.rate-area:not(:checked) > label {
-    float: right;
-    width: .80em;
-    overflow: hidden;
-    white-space: nowrap;
-    cursor: pointer;
-    font-size: 40px;
-    line-height: 32px;
-    color: lightgrey;
-    margin-bottom: 10px !important;
-}
-
-.rate-area:not(:checked) > label:before {
-    content: '★';
-}
-
-.rate-area > input:checked ~ label {
-    color: #2A5DA0;
-    text-shadow: none;
-}
-
-.rate-area:not(:checked) > label:hover,
-.rate-area:not(:checked) > label:hover ~ label {
-    color:#2A5DA0;
-    
-}
-
-.rate-area > input:checked + label:hover,
-.rate-area > input:checked + label:hover ~ label,
-.rate-area > input:checked ~ label:hover,
-.rate-area > input:checked ~ label:hover ~ label,
-.rate-area > label:hover ~ input:checked ~ label {
-    color:#2A5DA0;
-    text-shadow: none;
-    
-}
-
-.rate-area > label:active {
-    position:relative;
-    top:0px;
-    left:0px; 
-}
-
-.star{
+  .rate {
     display: block;
     margin: 30px auto;
     border-radius: 5px;
     width: 200px;
     height: 50px;
     font-size: 17px;
- 
+}
+.rate:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+}
+.rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+}
+.rate:not(:checked) > label:before {
+    content: '★ ';
+}
+.rate > input:checked ~ label {
+    color:#203b63;    
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+    color:#203b63;  
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+    color:#203b63;
 }
 
-#Summary{
 
-}
